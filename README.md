@@ -6,4 +6,7 @@
 
 * Diogo Sousa nº 93794
 
+# Link para o repositório
+https://github.com/LETI-122651/BlackBoxTesting
+
 # Vídeo no Youtube
