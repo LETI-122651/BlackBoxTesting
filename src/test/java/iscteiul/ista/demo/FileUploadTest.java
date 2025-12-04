@@ -28,7 +28,7 @@ public class FileUploadTest {
 
         SelenideElement uploadInput = $("#file-upload");
         uploadInput.scrollIntoView(true);
-        uploadInput.uploadFile(new File("resources/test-upload.txt"));
+        uploadInput.uploadFile(new File("src/test/resources/test-upload.txt"));
         $("#file-submit").click();
         $("#uploaded-files").shouldHave(text("test-upload.txt"));
         Thread.sleep(2000); // só para observar o resultado
