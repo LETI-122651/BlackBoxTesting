@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class MainPageTest {
+public class BasicTest {
     MainPage mainPage = new MainPage();
 
     @BeforeAll
@@ -56,4 +56,56 @@ public class MainPageTest {
         $("#products-page").shouldBe(visible);
         assertEquals("All Developer Tools and Products by JetBrains", Selenide.title());
     }
+
+    @Test
+    public void testCheckboxes() {
+        open("https://the-internet.herokuapp.com/checkboxes");
+
+        SelenideElement checkbox1 = $$("input[type='checkbox']").get(0);
+        SelenideElement checkbox2 = $$("input[type='checkbox']").get(1);
+
+        checkbox1.click();
+        checkbox1.shouldBe(checked);
+
+        checkbox2.click();
+        checkbox2.shouldNotBe(checked);
+    }
+
+    @Test
+    public void testAuthentication() {
+        open("https://the-internet.herokuapp.com/login");
+
+        $("#username").setValue("tomsmith");
+        $("#password").setValue("SuperSecretPassword!");
+
+        $("button[type='submit']").click();
+
+        $("#flash").shouldHave(text("You logged into a secure area!"));
+    }
+
+    @Test
+    public void testDropdown() {
+        open("https://the-internet.herokuapp.com/dropdown");
+
+        SelenideElement dropdown = $("#dropdown");
+
+        dropdown.selectOption("Option 2");
+
+        dropdown.getSelectedOption().shouldHave(text("Option 2"));
+    }
+
+    @Test
+    public void testInputs() {
+        open("https://the-internet.herokuapp.com/inputs");
+
+        SelenideElement input = $("input[type='number']");
+
+        input.setValue("123");
+        input.shouldHave(value("123"));
+
+        input.clear();
+        input.shouldHave(value(""));
+    }
+
+
 }
