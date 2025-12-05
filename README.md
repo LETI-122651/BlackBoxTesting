@@ -10,3 +10,5 @@
 https://github.com/LETI-122651/BlackBoxTesting
 
 # Vídeo no Youtube
+
+https://youtu.be/oZpB-UX37SA
