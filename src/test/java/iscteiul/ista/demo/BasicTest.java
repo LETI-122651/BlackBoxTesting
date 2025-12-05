@@ -7,6 +7,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
@@ -107,5 +108,19 @@ public class BasicTest {
         input.shouldHave(value(""));
     }
 
+    @Test
+    public void testHorizontalSlider() {
+        open("https://the-internet.herokuapp.com/horizontal_slider");
 
+        SelenideElement slider = $("#content input[type='range']");
+        SelenideElement range = $("#range");
+
+        slider.click();
+
+        for (int i = 0; i < 4; i++) {
+            slider.sendKeys(Keys.ARROW_RIGHT);
+        }
+
+        range.shouldHave(text("4"));
+    }
 }
